@@ -1,0 +1,66 @@
+#+TITLE: Wordle Helper
+
+* Description
+Just a tool to assist in solving a worde puzzle. The real purpose is to learn the Go language.
+
+* Usage
+Run with:
+
+: go run .
+
+Enter the word you guess, and then the outcome of the guess, using the following options:
+
+- =c= - letter is correct
+- =e= - letter is used elsewhere
+- =x= - letter is incorrect
+
+You are then presented with the list of candidate words, sorted by words with the most number of unique letters first.
+
+Then the cycle continues with another prompt.
+
+Use =Control-C= to bail out.
+
+Here is a sample session solving the word =ennui=:
+
+#+BEGIN_EXAMPLE
+prompt% go run .
+  Enter guess: fried
+Enter outcome: xxeex
+---------------------------------------------------------------------------
+mesia  pokie  zowie  aisle  aizle  alkie  aspie  bagie  begin  zinke  belit
+yowie  bemix  benis  benji  yince  besit  besti  bewig  bezil  yetis  bigae
+xenic  bilge  binge  biome  biose  xenia  boeti  bogie  bonie  bosie  bowie
+cavie  withe  cesti  ciels  winze  cleik  cogie  cosie  cozie  cutie  eatin
+winge  eight  wince  eikon  elain  elchi  wiels  eloin  elsin  email  emoji
+enlit  walie  enoki  entia  envoi  eosin  vygie  equip  ethic  vogie  etuis
+genic  vleis  vitae  visne  genio  genip  viewy  views  vieux  vexil  gleis
+gynie  helio  helix  hemic  hemin  hiems  hinge  venti  homie  ickle  ileac
+uptie  ileum  ileus  image  imbue  untie  inbye  incle  inept  ingle  inkle
+umpie  isnae  ulzie  istle  items  ixtle  jakie  jaxie  ulyie  tozie  jolie
+---------------------------------------------------------------------------
+  Enter guess: begin
+Enter outcome: xexee
+---------------------------------------------------------------------------
+minae  visne  envoi  zinke  incle  inept  inkle  isnae  yince  liane  pince
+enoki  minke  mince  sient  minse  moeni  naevi  niche  winze  wince  miens
+since  liens  jinne  siens  nisse  nieve  niess  niece  ennui  inane
+---------------------------------------------------------------------------
+  Enter guess: mince
+Enter outcome: xecxe
+---------------------------------------------------------------------------
+ennui
+---------------------------------------------------------------------------
+  Enter guess: ^Csignal: interrupt
+#+END_EXAMPLE
+
+* License
+See [[the license][LICENSE]].
+
+The [[valid-words.txt]] file was sourced from [[https://gist.github.com/dracos/dd0668f281e685bad51479e5acaadb93/raw/6bfa15d263d6d5b63840a8e5b64e04b382fdb079/valid-wordle-words.txt][this gist]].
+
+* Dev Notes
+Obviously you need =go= installed. Exercise left to reader. I used =VS Code= to develop.
+
+Run tests with:
+
+: go test -v
