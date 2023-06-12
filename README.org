@@ -1,7 +1,7 @@
 #+TITLE: Wordle Helper
 
 * Description
-Just a tool to assist in solving a worde puzzle. The real purpose is to learn the Go language.
+Just a tool to assist in solving a Wordle puzzle. The real purpose is to learn the Go language.
 
 * Usage
 Run with:
