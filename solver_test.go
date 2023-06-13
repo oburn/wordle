@@ -16,28 +16,18 @@ func TestRegex(t *testing.T) {
 }
 
 func TestGrep(t *testing.T) {
-	var s1 = newState(3)
-	s1.candidates[0] = "abc"
-	s1.candidates[1] = "def"
-	s1.candidates[2] = "xyz"
-	s1.knownLetters = "aez"
-	var r1 = s1.Grep("words")
-	const expect = "grep '^[abc][def][xyz]$' words | grep a | grep e | grep z"
-	if r1 != expect {
-		t.Error("Expected ", expect, ", got ", r1)
+	state := State{knownLetters: "aez", candidates: []string{"abc", "def", "xyz"}}
+	got := state.Grep("words")
+	if want := "grep '^[abc][def][xyz]$' words | grep a | grep e | grep z"; want != got {
+		t.Error("Wanted ", want, ", got ", got)
 	}
 }
 
 func TestString(t *testing.T) {
-	var s1 = newState(3)
-	s1.candidates[0] = "abc"
-	s1.candidates[1] = "def"
-	s1.candidates[2] = "xyz"
-	s1.knownLetters = "aez"
-	var r1 = s1.String()
-	const expect = "{knownLetters: aez, candidates: [abc, def, xyz]}"
-	if r1 != expect {
-		t.Error("Expected ", expect, ", got ", r1)
+	state := State{knownLetters: "aez", candidates: []string{"abc", "def", "xyz"}}
+	got := state.String()
+	if want := "{knownLetters: aez, candidates: [abc, def, xyz]}"; want != got {
+		t.Error("Wanted ", want, ", got ", got)
 	}
 }
 
