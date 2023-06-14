@@ -64,3 +64,6 @@ Obviously you need =go= installed. Exercise left to reader. I used =VS Code= to 
 Run tests with:
 
 : go test -v
+
+* Ideas
+Use https://towardsdatascience.com/a-frequency-analysis-on-wordle-9c5778283363 and rank words that contain letter that are the most average frequency of letters in 5-letter words. I.e. favour using =e= over =z= as it's more frequent. Still prefer words with the most number of unique letters.
