@@ -69,3 +69,38 @@ Run tests with:
 Use https://towardsdatascience.com/a-frequency-analysis-on-wordle-9c5778283363 and rank words that contain letter that are the most average frequency of letters in 5-letter words. I.e. favour using =e= over =z= as it's more frequent. Still prefer words with the most number of unique letters.
 
 [[https://www.rockpapershotgun.com/wordle-past-answers][Past Solutions]]
+
+
+
+
+
+
+
+| Letter | Rating |
+|--------+--------|
+| a      |     52 |
+| e      |     48 |
+| s      |     41 |
+| o      |     32 |
+| r      |     31 |
+| i      |     30 |
+| l      |     26 |
+| t      |     25 |
+| n      |     25 |
+| u      |     21 |
+| d      |     17 |
+| c      |     16 |
+| y      |     15 |
+| m      |     15 |
+| p      |     14 |
+| h      |     14 |
+| b      |     13 |
+| g      |     12 |
+| k      |     11 |
+| f      |      8 |
+| w      |      7 |
+| v      |      6 |
+| z      |      3 |
+| j      |      2 |
+| x      |      2 |
+| q      |      1 |
