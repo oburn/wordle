@@ -94,12 +94,18 @@ func (s State) Next(guess string, outcome string) State {
 	return result
 }
 
-func NumUniqueChars(str string) int {
-	uniqueChars := make(map[rune]bool)
-	for _, ch := range str {
-		uniqueChars[ch] = true
+func uniqueChars(str string) []rune {
+	seen := make(map[rune]bool)
+	unique := []rune{}
+
+	for _, char := range str {
+		if !seen[char] {
+			seen[char] = true
+			unique = append(unique, char)
+		}
 	}
-	return len(uniqueChars)
+
+	return unique
 }
 
 func lettersContained(letters, word string) bool {
@@ -112,7 +118,9 @@ func lettersContained(letters, word string) bool {
 }
 
 func scoreWord(word string) int {
-	return NumUniqueChars(word)
+	unique := uniqueChars(word)
+	// return NumUniqueChars(word)
+	return len(unique)
 }
 
 func (s State) ScoreWords(words []string) []ScoredWord {

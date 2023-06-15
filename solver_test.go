@@ -1,6 +1,7 @@
 package main
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -103,17 +104,17 @@ func TestNextState_WRONG(t *testing.T) {
 }
 
 func TestUniqueChars(t *testing.T) {
-	r1 := NumUniqueChars("abc")
-	if r1 != 3 {
-		t.Fatal("Expected 3, got ", r1)
+	r1 := uniqueChars("abc")
+	if want := ([]rune{'a', 'b', 'c'}); !reflect.DeepEqual(r1, want) {
+		t.Fatalf("Wanted %v, got %v", want, r1)
 	}
-	r1 = NumUniqueChars("abcabc")
-	if r1 != 3 {
-		t.Fatal("Expected 3, got ", r1)
+	r1 = uniqueChars("abcabc")
+	if want := ([]rune{'a', 'b', 'c'}); !reflect.DeepEqual(r1, want) {
+		t.Fatalf("Wanted %v, got %v", want, r1)
 	}
-	r1 = NumUniqueChars("abcxabc")
-	if r1 != 4 {
-		t.Fatal("Expected 4, got ", r1)
+	r1 = uniqueChars("abcxabc")
+	if want := ([]rune{'a', 'b', 'c', 'x'}); !reflect.DeepEqual(r1, want) {
+		t.Fatalf("Wanted %v, got %v", want, r1)
 	}
 }
 
@@ -130,6 +131,15 @@ func TestScoreWords(t *testing.T) {
 	r1 := s1.ScoreWords(inputs)
 	if len(r1) != 3 {
 		t.Fatal("Expected 3, got ", len(r1))
+	}
+	if want := (ScoredWord{word: "abcd", score: 4}); r1[0] != want {
+		t.Fatalf("Expected %v, got %v", want, r1[0])
+	}
+	if want := (ScoredWord{word: "ddba", score: 3}); r1[1] != want {
+		t.Fatalf("Expected %v, got %v", want, r1[1])
+	}
+	if want := (ScoredWord{word: "aabb", score: 2}); r1[2] != want {
+		t.Fatalf("Expected %v, got %v", want, r1[2])
 	}
 }
 
