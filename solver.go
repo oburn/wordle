@@ -16,6 +16,37 @@ type State struct {
 	candidates   []string
 }
 
+var (
+	CharToRating = map[rune]int{
+		'a': 52,
+		'e': 48,
+		's': 41,
+		'o': 32,
+		'r': 31,
+		'i': 30,
+		'l': 26,
+		't': 25,
+		'n': 25,
+		'u': 21,
+		'd': 17,
+		'c': 16,
+		'y': 15,
+		'm': 15,
+		'p': 14,
+		'h': 14,
+		'b': 13,
+		'g': 12,
+		'k': 11,
+		'f': 8,
+		'w': 7,
+		'v': 6,
+		'z': 3,
+		'j': 2,
+		'x': 2,
+		'q': 1,
+	}
+)
+
 func newState(size int) State {
 	var result = State{knownLetters: "", candidates: []string{}}
 	for i := 0; i < size; i++ {
@@ -119,8 +150,11 @@ func lettersContained(letters, word string) bool {
 
 func scoreWord(word string) int {
 	unique := uniqueChars(word)
-	// return NumUniqueChars(word)
-	return len(unique)
+	result := 1_000 * len(unique)
+	for _, ch := range unique {
+		result += CharToRating[ch]
+	}
+	return result
 }
 
 func (s State) ScoreWords(words []string) []ScoredWord {

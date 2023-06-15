@@ -132,13 +132,13 @@ func TestScoreWords(t *testing.T) {
 	if len(r1) != 3 {
 		t.Fatal("Expected 3, got ", len(r1))
 	}
-	if want := (ScoredWord{word: "abcd", score: 4}); r1[0] != want {
+	if want := (ScoredWord{word: "abcd", score: 4_098}); r1[0] != want {
 		t.Fatalf("Expected %v, got %v", want, r1[0])
 	}
-	if want := (ScoredWord{word: "ddba", score: 3}); r1[1] != want {
+	if want := (ScoredWord{word: "ddba", score: 3_082}); r1[1] != want {
 		t.Fatalf("Expected %v, got %v", want, r1[1])
 	}
-	if want := (ScoredWord{word: "aabb", score: 2}); r1[2] != want {
+	if want := (ScoredWord{word: "aabb", score: 2_065}); r1[2] != want {
 		t.Fatalf("Expected %v, got %v", want, r1[2])
 	}
 }
