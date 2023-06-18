@@ -127,7 +127,7 @@ func (s State) Next(guess string, outcome string) State {
 
 func uniqueChars(str string) []rune {
 	seen := make(map[rune]bool)
-	unique := []rune{}
+	var unique []rune
 
 	for _, char := range str {
 		if !seen[char] {
@@ -158,7 +158,7 @@ func scoreWord(word string) int {
 }
 
 func (s State) ScoreWords(words []string) []ScoredWord {
-	result := []ScoredWord{}
+	var result []ScoredWord
 	regex := regexp.MustCompile(s.Regex())
 	for _, word := range words {
 		if regex.MatchString(word) && lettersContained(s.knownLetters, word) {
