@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 )
 
@@ -37,9 +38,15 @@ func main() {
 
 	for i := 0; i < 10; i++ {
 		fmt.Print("  Enter guess: ")
-		fmt.Scanln(&guess)
+		_, err := fmt.Scanln(&guess)
+		if err != nil {
+			log.Fatalf("Unable to read the guess: %v\n", err)
+		}
 		fmt.Print("Enter outcome: ")
-		fmt.Scanln(&outcome)
+		_, err = fmt.Scanln(&outcome)
+		if err != nil {
+			log.Fatalf("Unable to read the outcome: %v\n", err)
+		}
 		state = state.Next(guess, outcome)
 		scored := state.ScoreWords(words)
 		fmt.Println("---------------------------------------------------------------------------")
