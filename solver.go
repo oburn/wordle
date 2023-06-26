@@ -1,6 +1,7 @@
 package main
 
 import (
+	"math"
 	"regexp"
 	"sort"
 	"strings"
@@ -173,15 +174,18 @@ func (s State) ScoreWords(words []string) []ScoredWord {
 }
 
 func Tabulate(scored []ScoredWord, width, height int) string {
-	total := width * height
+	total := int(math.Min(float64(width*height), float64(len(scored)))) // stupid go
+	lines := make(map[int]string)
+	for i := 0; i < total; i++ {
+		lines[i%height] += scored[i].word + "  "
+	}
+
 	result := ""
-	for i := 0; i < total && i < len(scored); i++ {
-		result += scored[i].word
-		if (i+1)%width == 0 {
-			result += "\n"
-		} else {
-			result += "  "
+	for i := 0; i < height; i++ {
+		if line := lines[i]; line != "" {
+			result += strings.TrimSpace(lines[i]) + "\n"
 		}
 	}
-	return strings.TrimSpace(result) + "\n"
+
+	return result
 }

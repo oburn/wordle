@@ -143,7 +143,7 @@ func TestScoreWords(t *testing.T) {
 	}
 }
 
-func TestTabulate_Excess(t *testing.T) {
+func TestTabulate(t *testing.T) {
 	scored := []ScoredWord{
 		{word: "aaaa", score: 1},
 		{word: "bbbb", score: 2},
@@ -153,27 +153,28 @@ func TestTabulate_Excess(t *testing.T) {
 		{word: "ddba", score: 6},
 		{word: "xxxx", score: 7},
 	}
-	r1 := Tabulate(scored, 3, 2)
-	e1 := `aaaa  bbbb  aabb
-gaba  abcd  ddba
-`
-	if r1 != e1 {
-		t.Fatal("Expected ", e1, ", got ", r1)
+
+	args := []struct {
+		width, height int
+		want          string
+	}{
+		{3, 2, `aaaa  aabb  abcd
+bbbb  gaba  ddba
+`},
+		{2, 2, `aaaa  aabb
+bbbb  gaba
+`},
+		{4, 4, `aaaa  abcd
+bbbb  ddba
+aabb  xxxx
+gaba
+`},
 	}
 
-	r2 := Tabulate(scored, 2, 2)
-	e2 := `aaaa  bbbb
-aabb  gaba
-`
-	if r2 != e2 {
-		t.Fatal("Expected ", e2, ", got ", r2)
-	}
-
-	r3 := Tabulate(scored, 4, 4)
-	e3 := `aaaa  bbbb  aabb  gaba
-abcd  ddba  xxxx
-`
-	if r3 != e3 {
-		t.Fatal("Expected ", e3, ", got ", r3, "<<<")
+	for _, arg := range args {
+		got := Tabulate(scored, arg.width, arg.height)
+		if got != arg.want {
+			t.Fatal("Expected ", arg.want, ", got ", got)
+		}
 	}
 }
