@@ -2,20 +2,18 @@ package main
 
 import (
 	"bufio"
+	"bytes"
+	_ "embed"
 	"fmt"
 	"log"
-	"os"
 )
 
-func loadWords(filename string) ([]string, error) {
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
+//go:embed valid-words.txt
+var validWordsAsBytes []byte
 
+func loadWords() ([]string, error) {
 	var words []string
-	scanner := bufio.NewScanner(file)
+	scanner := bufio.NewScanner(bytes.NewReader(validWordsAsBytes))
 	for scanner.Scan() {
 		words = append(words, scanner.Text())
 	}
@@ -31,7 +29,7 @@ func main() {
 	var guess string
 	var outcome string
 	state := newState(5)
-	words, err := loadWords("valid-words.txt")
+	words, err := loadWords()
 	if err != nil {
 		panic(err)
 	}
