@@ -70,12 +70,6 @@ Use https://towardsdatascience.com/a-frequency-analysis-on-wordle-9c5778283363 a
 
 [[https://www.rockpapershotgun.com/wordle-past-answers][Past Solutions]]
 
-
-
-
-
-
-
 | Letter | Rating |
 |--------+--------|
 | a      |     52 |
