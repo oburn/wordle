@@ -53,6 +53,15 @@ ennui
   Enter guess: ^Csignal: interrupt
 #+END_EXAMPLE
 
+* Scratch
+
+#+BEGIN_SRC sh :results output
+go run . <<DOG
+plant
+xxxxx
+DOG
+#+END_SRC
+
 * License
 See [[the license][LICENSE]].
 
