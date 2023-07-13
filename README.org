@@ -113,3 +113,8 @@ Use https://towardsdatascience.com/a-frequency-analysis-on-wordle-9c5778283363 a
 | j      |      2 |
 | x      |      2 |
 | q      |      1 |
+
+* Emacs Configuration
+# Local Variables:
+# org-confirm-babel-evaluate: nil
+# End:
