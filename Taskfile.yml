@@ -1,0 +1,25 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task -a
+    silent: true
+    desc: Lists the available tasks
+
+  clean:
+    desc: Clean up
+    cmds:
+      - rm -f wordle
+
+  test:
+    desc: Run the tests
+    cmds:
+      - go test -v
+      
+  tidy:
+    desc: Tidy up the modules
+    cmds:
+      - go mod tidy
